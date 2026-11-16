@@ -1,29 +1,33 @@
 # Semester Week 10 Progress Report
 
+
+
 ## Completed Work
 
-TODO
+Chose the project topic (ShopBuddy, a shopping assistant for local shops) and wrote the proposal in `reports/proposal.md`: problem, users, functions, tools, architecture, evaluation plan and milestones.
 
 ## Important Commits
 
-TODO
+- Commit hash: [fill in after commit]
+- Description: Add project proposal
+- Link: [fill in]
 
 ## Current Functionality
 
-TODO
+No application code yet. The design is planned (4 tools plus a memory tool, LangGraph loop).
 
 ## Problems Encountered
 
-TODO
+The proposal was written late, on 16 November (semester Week 12), not in the Week 10 window. I considered using real shops and decided against it because there is no open data access and stock changes daily.
 
 ## Solutions
 
-TODO
+Decided to use fictional shops and data behind a separate data layer, so real sources could be connected later.
 
 ## What I Learned
 
-TODO
+How to define tools by purpose, input, output and failure cases before coding, and why the program, not the model, must control user identifiers and side effects.
 
 ## Next Week
 
-TODO
+Set up the repository, create fictional data, make the first LLM call, implement `search_products` and `check_stock` with tests.
