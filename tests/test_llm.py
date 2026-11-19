@@ -34,3 +34,26 @@ def test_empty_input_does_not_call_model():
 
 def test_model_failure_gives_message_not_crash():
     assert "failed" in ask(BrokenLLM(), "bouquet")
+
+
+def test_make_llm_without_key_gives_clear_error(monkeypatch):
+    import pytest
+    from llm import make_llm
+    monkeypatch.delenv("LLM_API_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        make_llm()
+
+
+def test_ask_sends_system_prompt_and_trimmed_text():
+    from llm import SYSTEM_PROMPT
+
+    class RecordingLLM:
+        """FAKE model that remembers what it was sent."""
+        def invoke(self, messages):
+            self.messages = messages
+            return FakeReply("ok")
+
+    llm = RecordingLLM()
+    ask(llm, "  bouquet  ")
+    assert llm.messages[0] == ("system", SYSTEM_PROMPT)
+    assert llm.messages[1] == ("human", "bouquet")
